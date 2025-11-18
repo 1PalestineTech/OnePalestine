@@ -1,0 +1,73 @@
+<div  class ="flex-column p-50 ai-center jc-spaceb w-100 text-center">
+    <div></div>
+    <div class="slide_element" id="slide_{{first_slide.id}}">
+      <h1>{{first_slide.title}}</h1>
+      <br>
+      <div>{{first_slide.caption}}</div>
+    </div>
+    {% for slide in rest_slides %}
+      <div class="slide_element" id="slide_{{slide.id}}" style="display:none;">
+        <h1>{{slide.title}}</h1>
+        <br>
+        <div>{{slide.caption}}</div>
+      </div>
+    {% endfor %}
+    <div>
+      <div>
+        <div class="timespam flex-row column-gap-20 mb-20">
+          {% for item in slide_controller %}
+          <span class="slide_controller" data-url="{{item.url}}" data-id="{{item.id}}">{{item.date}}</span>
+          {% endfor %}
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const controllers = document.querySelectorAll('.slide_controller');
+      controllers.forEach(controller => {
+        controller.addEventListener('click', function() {
+          const url = this.getAttribute('data-url');
+          document.querySelector("main> div:first-child").style.backgroundImage = 
+            `linear-gradient(rgba(20,20,20,0.4), rgba(20,20,20,0.4)), url('${url}')`;
+          const targetId = this.getAttribute('data-id');
+          document.querySelectorAll('.slide_element').forEach(slide => {
+            slide.style.display = 'none';
+          });
+          document.getElementById('slide_' + targetId).style.display = 'block';
+        });
+      });
+    });
+  </script>
+  <style>
+
+    main > div:first-child{
+      height: 600px;
+    background-image: linear-gradient(rgba(20,20,20,0.4), rgba(20,20,20,0.4)), 
+    url({{first_slide.image.url}});
+    color:white;
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+  }
+  div.timespam span::before{
+    content:"";
+    display:block;
+    background:white;
+    border-radius:50%;
+    width:12px;
+    height:12px;
+    position:relative;
+    top:35px;
+    left:15px;
+    
+  }
+  hr{
+    border:solid 1px white;
+    margin-left:20px;
+    margin-right:10px;
+    position:relative;
+    bottom:10px;
+  }
+  </style>

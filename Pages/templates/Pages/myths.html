@@ -1,0 +1,98 @@
+{% extends 'Pages/base.html' %}
+
+{% block content %}
+{% load static %}
+<main class ="flex-column row-gap-50  w-100">
+    
+    {% include 'Pages/components/hero.html' %}
+    <div class="w-100 flex-column p-50 jc-center" >
+    {% for myth in myths %}
+        <details >
+            <summary class="flex-row jc-spaceb w-100 ai-center"><span>{{myth.title}}</span><span class="plus"></span></summary>
+            <div class="font-18">{{myth.content |safe}}</div>
+        </details>
+    {% endfor %}
+    </div>
+</main>
+<style>
+  .plus{
+    height:20px;
+    
+    border-left:3px black solid;
+    display:block;
+  }
+  .plus::after{
+    content:"";
+    background:black;
+    display:block;
+    width:20px;
+    height:3px;
+    position:relative;
+    top:9px;
+    right:11px;
+    
+  }
+  
+  details summary {
+  list-style: none;          /* Remove default list marker */
+}
+
+details summary::-webkit-details-marker {
+  display: none;             /* Hide the arrow in Chrome, Safari, Edge */
+}
+
+details summary::marker {
+  display: none;             /* Hide the arrow in Firefox */
+}
+
+details {
+  border-radius: 5px;
+}
+
+summary {
+  padding:30px 0px;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+  font-weight: bold;
+}
+  summary span:first-child{
+    width:90%;
+    line-height:20px;
+  }
+  details p{
+    padding:30px 0px;
+  }
+  
+@media only screen and (max-width: 480px) {
+    .plus{
+        display:none;
+    }
+    summary span:first-child{
+    width:100%;
+    line-height:20px;
+  }
+
+}
+</style>
+<script>
+  
+document.querySelectorAll("summary").forEach(item=>item.onclick=(e)=>{
+    let el;
+    if(e.target.tagName =="SUMMARY"){
+    el =   e.target.querySelector(".plus")
+    }
+    else{
+        el =e.target.parentElement.querySelector(".plus")
+    }
+    if(el.style.transform=='rotateZ(45deg)'){
+        el.style.transform='rotateZ(0deg)'
+    }
+    else{
+         el.style.transform='rotateZ(45deg)'
+        
+    }
+    
+})
+</script>
+
+{% endblock %}
