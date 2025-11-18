@@ -1,0 +1,2 @@
+# OnePalestine
+Shifting toward Django
