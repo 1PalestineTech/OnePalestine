@@ -26,7 +26,7 @@
         <div class="blank flex-column row-gap-10">
             <div class="font-16">{{item.date}}</div>
             <div class="font-18 weight-700">{{item.title}}</div>
-            <div>{{item.description}}</div>
+            <p>{{item.description}}</p>
             <div><a href="{{item.link}}" class="weight-700" style="color:black;border-bottom:2px solid black">Read More</a></div>
         </div>
         <div class="blank"></div>
@@ -72,8 +72,13 @@
     
   }
   .left >div p,.right> div p{
-    height:100px;
-    overflow: hidden;
+        
+    overflow:hidden;  
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; 
+  text-overflow: ellipsis;
+  
   }
   .left >div,.right> div{
     height:250px;
