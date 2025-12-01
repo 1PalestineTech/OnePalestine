@@ -1,0 +1,9 @@
+    footer a,footer a:hover,footer a:active{
+       color:white;
+    }
+  footer div div div{
+    flex-grow:3;
+  }
+  .newsletter{
+    border-radius: 5px;
+  }
