@@ -6,14 +6,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from .serializers import MythsSerializer,HistorySerializer
 
-class MythViewSet(viewsets.ModelViewSet):
+class MythViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows items to be viewed or edited.
     """
     queryset = ZionistMyth.objects.all()
     serializer_class = MythsSerializer
-    
-class HistoryViewSet(viewsets.ModelViewSet):
+
+class HistoryViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows items to be viewed or edited.
     """
