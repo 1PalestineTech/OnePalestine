@@ -1,9 +1,26 @@
-    footer a,footer a:hover,footer a:active{
-       color:white;
-    }
-  footer div div div{
-    flex-grow:3;
+footer{
+  background:#000000;
+  color:white;
+}
+footer a,footer a:hover,footer a:active{
+    color:white;
+}
+
+.newsletter{
+border-radius: 5px;
+}
+
+ @media only screen and (max-width: 420px) {
+  .footer-links{
+    flex-direction: column !important;
+    font-size: 18px;
   }
-  .newsletter{
-    border-radius: 5px;
+  .newsletter h3{
+    font-size: 20px;
+    text-align: left;
   }
+  .newsletter input{
+    padding-left: 10px;
+    font-size: 16px;
+  }
+ }

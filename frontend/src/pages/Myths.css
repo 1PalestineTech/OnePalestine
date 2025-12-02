@@ -1,0 +1,58 @@
+ .plus{
+    height:20px;
+    
+    border-left:3px black solid;
+    display:block;
+  }
+  .plus::after{
+    content:"";
+    background:black;
+    display:block;
+    width:20px;
+    height:3px;
+    position:relative;
+    top:9px;
+    right:11px;
+    
+  }
+  
+  details summary {
+  list-style: none;       
+}
+
+details summary::-webkit-details-marker {
+  display: none;            
+}
+
+details summary::marker {
+  display: none;            
+}
+
+details {
+  border-radius: 5px;
+}
+
+summary {
+  padding:30px 0px;
+  border-bottom: 2px solid black;
+  cursor: pointer;
+  font-weight: bold;
+}
+  summary span:first-child{
+    width:90%;
+    line-height:20px;
+  }
+  details p{
+    padding:30px 0px;
+  }
+  
+@media only screen and (max-width: 480px) {
+    .plus{
+        display:none;
+    }
+    summary span:first-child{
+    width:100%;
+    line-height:20px;
+  }
+
+}

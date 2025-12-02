@@ -1,0 +1,93 @@
+.line{
+  background:black;
+}
+
+.line{
+margin-top:50px;
+margin-bottom:130px;
+width:5px; 
+}
+.blank::before{
+  content:"";
+  width:80px;
+  height:5px;
+  background-color:black;
+  position:relative;
+  top:50px;
+}
+.right> div.blank::before{
+  right:100px;
+}
+.left> div.blank::before{
+  left:320px;
+}
+.grid{
+  justify-content:center;
+  display:grid;
+  grid-template-columns: 300px 2px 300px;
+  column-gap: 100px;
+  row-gap: 20px;
+  
+  /*background-image: url("Pages/images/history_background.png");**/
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+.left >div p,.right> div p{
+      
+  overflow:hidden;  
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; 
+  text-overflow: ellipsis;
+
+}
+.left >div,.right> div{
+  height:250px;
+}
+
+.left{
+  text-align:right;
+}
+.readMore{
+  color:black;
+  border-bottom:2px solid black
+}
+@media only screen and (max-width: 850px) {
+
+.grid{
+  grid-template-columns: 220px 2px 220px !important;
+  column-gap: 50px !important;
+}
+  .blank::before{
+  content:"";
+  width:40px;
+
+}
+.right> div.blank::before{
+  right:50px;
+}
+.left> div.blank::before{
+  left:230px;
+}
+}
+  @media only screen and (max-width: 580px) {
+  .grid{
+      grid-template-columns: 120px 2px 120px;
+      column-gap: 30px !important;
+  background-size: 60px;
+}
+.blank::before{
+  content:"";
+  width:20px;
+
+}
+.right> div.blank::before{
+  right:30px;
+}
+.left> div.blank::before{
+  left:230px;
+}
+
+}

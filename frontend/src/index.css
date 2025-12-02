@@ -678,7 +678,11 @@ a, a:visited, a:active {
 .word-25{
   word-spacing:25px;
 }
-/* responsive*/
+/*
+
+  Responsive 
+
+*/
 
 @media only screen and (max-width: 980px) {
   .font-20.font-18,.font-16{
@@ -700,15 +704,8 @@ a, a:visited, a:active {
 .rf-column {
     width:24% !important;
   }
-.toggle{
-    display:none;
-  }
 
-/*
 
-  Responsive 
-
-*/
 @media screen and (max-width: 1020px){
     .rf-column {
     width:30% !important;
@@ -720,9 +717,6 @@ a, a:visited, a:active {
   .rf-column {
     width:47% !important;
   }
-    .toggle{
-    display:block !important;
-  }
   
 }
 
@@ -731,12 +725,4 @@ a, a:visited, a:active {
     width:100% ;
   }
 
-}
-
-footer{
-  background:#000000;
-  color:white;
-}
-.toggle div{
-  display:none;
 }

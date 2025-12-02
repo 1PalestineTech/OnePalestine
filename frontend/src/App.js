@@ -1,17 +1,19 @@
 
 import './App.css';
-import {Navbar} from './components/Navbar'
-import {Footer} from './components/Footer'
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+
+import { HistoryPage } from './pages/History';
+import { NoFoundPage } from './pages/404';
+import { MythsPage } from './pages/Myths';
 function App() {
   return (
     <div className="App">
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<>
-        <Navbar />
-      <Footer /></>} />
+        <Route path="/history" element={<HistoryPage/>} />
+        <Route path="/myths" element={<MythsPage/>} />
+        <Route path="/*" element={<NoFoundPage/>} />
       </Routes>
 
     </BrowserRouter>
