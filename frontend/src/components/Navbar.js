@@ -17,7 +17,7 @@ export function Navbar(){
         <nav className={"p-30 pl-50  flex-column row-gap-20 w-100"}>
   <div className={"column-gap-20 flex-row ai-center jc-spaceb"}>
     <Link to='/'>
-     <img src='Pages/images/black_logo.png' alt="1Palestine Logo" width="150px" />
+     <img src='/static/Pages/images/black_logo.png' alt="1Palestine Logo" width="150px" />
     </Link>
   
     <div className="nav-toggle flex-row column-gap-30 weight-700">

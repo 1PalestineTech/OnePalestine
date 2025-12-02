@@ -12,7 +12,7 @@ export function Footer(){
         <div className="flex-row jc-spaceb row-gap-30 flex-wrap">
             <div className="flex-column text-left  row-gap-20">
                 <Link to='/'>
-                    <img src='/Pages/images/white_logo.png' alt="1Palestine Logo" width="150px" />
+                    <img src='/static/Pages/images/white_logo.png' alt="1Palestine Logo" width="150px" />
                 </Link>
                 <div className="footer-links flex-row column-gap-30 row-gap-10 flex-wrap">
                     <WebLinks />

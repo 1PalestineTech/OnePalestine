@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { HistoryPage } from './pages/History';
 import { NoFoundPage } from './pages/404';
 import { MythsPage } from './pages/Myths';
+import { AboutPage } from './pages/About';
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/history" element={<HistoryPage/>} />
         <Route path="/myths" element={<MythsPage/>} />
+        <Route path="/about" element={<AboutPage/>} />
         <Route path="/*" element={<NoFoundPage/>} />
       </Routes>
 

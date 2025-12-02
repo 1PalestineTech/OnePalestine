@@ -21,11 +21,11 @@ export function WebLinks(){
         label:'Projects'
         },
         {
-        url:'/projects',
+        url:'/resources',
         label:'Resources'
         },
         {
-        url:'/About',
+        url:'/about',
         label:'About Us'
         }
     ]
