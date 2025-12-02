@@ -7,7 +7,7 @@ function About(){
     return(
 
         <main class ="flex-column row-gap-50  w-100">
-            <Hero name="About Us" description="1Palestine is a global movement dedicated to Palestinian liberation through the power of digital advocacy combating zionist propaganda and promoting awareness of the Palestinian truth." url="test3" />
+            <Hero name="About Us" description="1Palestine is a global movement dedicated to Palestinian liberation through the power of digital advocacy combating zionist propaganda and promoting awareness of the Palestinian truth." />
             <OurImpact />
             <Statement />
         </main>

@@ -1,8 +1,8 @@
 
 
-export function Hero({name,description,url}){
+export function Hero({name,description,url="media/images/default_cover.jpg"}){
     
-    const style={backgroundImage: 'linear-gradient(rgba(180,180,180,0.4), rgba(180,180,180,0.4)), url(" + url + ")'}
+    const style={backgroundImage: 'linear-gradient(rgba(180,180,180,0.4), rgba(180,180,180,0.4)), url(' + url + ')'}
     return (
     <div className = "hero_section flex-column p-50 ai-center jc-spaceb w-100 text-center" style={style}>
         <div className ="flex-column p-50 ai-center jc-spaceb">

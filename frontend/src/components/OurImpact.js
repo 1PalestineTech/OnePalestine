@@ -1,6 +1,7 @@
 import './OurImpact.css'
 
 function ImpactElement({number,url,description}){
+    
     return(
         <div class="flex-column text-center row-gap-10">
           <img class="as-center" src={url} alt="Icon"/>
