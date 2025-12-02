@@ -3,106 +3,21 @@ import { HistoryItems } from '../components/HistoryItems'
 import './History.css'
 import {Page} from './Page'
 
-
+import {useState,useEffect} from 'react'
 
 function History(){
-    const left=[{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },]
-    const right=[{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },{
-        date:"aaaaa",
-        title:"faf",
-        description:"j j oj oij ojoj o jo jo jo jo",
-        link:"afafafafa"
-    },]
+    const [history,setHistory] =useState([{}])
+    useEffect(()=>{
+        fetch('/api/history/').then(
+            response =>{
+                return response.json()
+            }
+        ).then(
+            data=>setHistory(data)
+        )
+    },[])
+    const left = history.filter((item,index)=>index % 2 != 0)
+    const right = history.filter((item,index)=>index % 2 == 0)
 return (
     <main className ="flex-column  w-100">
     <Hero name="test " description="test2" url="test3" />
