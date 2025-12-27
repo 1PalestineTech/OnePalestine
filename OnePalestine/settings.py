@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,14 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-pj8h4nfmfnc^atfevszmzwh3r$vv5%9te27-#n#67*hnrdt0d#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True#False
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']#['1palestine.org', 'www.1palestine.org']
+ALLOWED_HOSTS = ['1palestine.org', 'www.1palestine.org', 'localhost']
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
+    'rest_framework',
+    'api',
     'Pages',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -68,7 +71,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "OnePalestine.wsgi.application"
-
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -98,7 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    "https://1palestine.org", 
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -116,12 +128,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+print(STATIC_ROOT)
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static', 
+os.path.join(BASE_DIR, 'static/'), 
 ]
-
+REST_FRAMEWORK['DEFAULT_PAGINATION_CLASS'] = 'rest_framework.pagination.PageNumberPagination'
+REST_FRAMEWORK['PAGE_SIZE'] = 8
 MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -135,4 +149,4 @@ MEDIA_URL = '/media/'
 #SECURE_HSTS_PRELOAD = True
 
 #SECURE_SSL_REDIRECT = True
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+#DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
