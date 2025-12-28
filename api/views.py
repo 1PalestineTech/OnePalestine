@@ -8,19 +8,26 @@ from django.db.models import Q, Case, When, IntegerField
 import django_filters
 class ArticleFilter(django_filters.FilterSet):
     tags = django_filters.CharFilter(method='filter_tags')
+    category = django_filters.CharFilter(method='filter_category')
     class Meta:
         model = Articles
-        fields = ['tags']
+        fields = ['tags','category']
     def filter_tags(self, queryset, name, value):
         if not value:
             return queryset
 
-        tag_list = [v.strip() for v in value.split(',') if v.strip()]
+        tag_list = [v.strip().title() for v in value.split(',') if v.strip()]
 
         if not tag_list:
             return queryset
-
         return queryset.filter(tags__name__in=tag_list).order_by('id')
+    def filter_category(self, queryset, name, value):
+        if not value:
+            return queryset
+
+        # Case-insensitive match for category name
+        return queryset.filter(category__name__iexact=value).distinct()
+
 class MythViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ZionistMyth.objects.all()
     serializer_class = MythsSerializer
