@@ -11,9 +11,15 @@ class ArticleFilter(django_filters.FilterSet):
     class Meta:
         model = Articles
         fields = ['tags']
-
     def filter_tags(self, queryset, name, value):
-        tag_list = value.split(',')
+        if not value:
+            return queryset
+
+        tag_list = [v.strip() for v in value.split(',') if v.strip()]
+
+        if not tag_list:
+            return queryset
+
         return queryset.filter(tags__name__in=tag_list).distinct()
 class MythViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ZionistMyth.objects.all()
