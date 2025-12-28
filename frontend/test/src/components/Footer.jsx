@@ -18,7 +18,7 @@ export function Footer(){
                     <WebLinks />
                 </div>
             </div>
-            <div class ="newsletter">
+            <div className ="newsletter">
                 <h3 className="font-20 mb-10">Join Newsletter</h3>
                 <input className="newsletter p-5 font-18" type="email" placeholder="Your email" />
             </div>

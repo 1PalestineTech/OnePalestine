@@ -1,0 +1,21 @@
+.About-message{
+
+    margin:50px;
+    font-size: 24px;
+    font-weight: 700;
+}
+@media only screen and (max-width: 750px) {
+.About-message{
+
+    margin:30px;
+    font-size: 18px ;
+    font-weight: 700;
+}
+}
+@media only screen and (max-width: 450px) {
+
+    .About-message{
+        margin:20px;
+    font-size: 14px !important;
+}
+}

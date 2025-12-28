@@ -20,7 +20,7 @@ function Myths(){
         )
     },[])
     return(
-    <main class ="flex-column row-gap-50  w-100">
+    <main className ="flex-column row-gap-50  w-100">
         <Hero name="Zionist Myth" description=""  />
         {loading ? <Loading/>:<MythsItems myths={myths}/>}
     </main>

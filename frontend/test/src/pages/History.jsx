@@ -6,7 +6,7 @@ import {Loading} from '../components/Loading'
 import {useState,useEffect} from 'react'
 
 function History(){
-    const [history,setHistory] =useState([{}])
+    const [history,setHistory] = useState([{}])
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
         fetch('/api/history/').then(
@@ -20,11 +20,11 @@ function History(){
             }
         )
     },[])
-    const left = history.filter((item,index)=>index % 2 != 0)
-    const right = history.filter((item,index)=>index % 2 == 0)
+    const left = history.filter((item,index)=>index % 2 !== 0)
+    const right = history.filter((item,index)=>index % 2 === 0)
 return (
     <main className ="flex-column  w-100">
-    <Hero name="test " description="test2" />
+    <Hero name="History" description="" />
     {loading ? <Loading />:
     <div className="grid m-20 w-90">
         <div className="left">

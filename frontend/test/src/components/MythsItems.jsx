@@ -29,7 +29,7 @@ function MythItem({title,content}){
 export function MythsItems({myths}){
 
     return(
-        <div class="w-100 flex-column p-50 jc-center" >
+        <div className="w-100 flex-column p-50 jc-center" >
             {
                 myths.map(myth =><MythItem title={myth.title} content={myth.content} />)
             }

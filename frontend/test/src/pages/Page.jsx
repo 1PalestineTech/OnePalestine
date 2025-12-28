@@ -1,5 +1,5 @@
-import {Navbar} from '../components/Navbar.js'
-import {Footer} from '../components/Footer.js'
+import {Navbar} from '../components/Navbar.jsx'
+import {Footer} from '../components/Footer.jsx'
 
 export function Page(WrappedComponent){
     return function EnhancedComponent(props) {

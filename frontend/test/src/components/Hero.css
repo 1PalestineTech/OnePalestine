@@ -1,0 +1,35 @@
+.hero_section{
+        
+        background-size: cover;       
+        background-position: center;  
+        background-repeat: no-repeat; 
+        color:black;
+        min-height:300px;
+}
+
+.hero_section p{
+      font-size: 22px;
+      font-weight: 700;
+}
+@media only screen and (max-width: 750px) {
+      .hero_section{
+      padding: 0px;
+      padding-top:20px;
+      }
+      .hero_section  p{
+      width: 100% !important;
+      font-size: 16px !important;
+      font-weight: 600;
+}         
+}
+@media only screen and (max-width: 450px) {
+      .hero_section{
+      padding: 0px;
+      padding-top:10px;
+      }
+      .hero_section  p{
+      width: 100% !important;
+      font-size:12px !important;
+      font-weight: 600;
+}         
+}

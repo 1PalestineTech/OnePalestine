@@ -3,10 +3,10 @@ import './OurImpact.css'
 function ImpactElement({number,url,description}){
     
     return(
-        <div class="flex-column text-center row-gap-10">
-          <img class="as-center" src={url} alt="Icon"/>
-          <span class="font-18 weight-700">{number}</span>
-          <p  class="font-16 weight-500 ellipsis">{description}</p>
+        <div className="flex-column text-center row-gap-10">
+          <img className="as-center" src={url} alt="Icon"/>
+          <span className="font-18 weight-700">{number}</span>
+          <p  className="font-16 weight-500 ellipsis">{description}</p>
       </div>
     )
 }
@@ -38,7 +38,7 @@ export function OurImpact(){
     },]
     return(
     <div className="p-50 flex-column jc-center ai-center row-gap-30">
-    <div className="mt-50"><span class="font-30 weight-700" >Our Impact So Far</span></div>
+    <div className="mt-50"><span className="font-30 weight-700" >Our Impact So Far</span></div>
     <div className="impact-container">
         {impact_data.map(impact=><ImpactElement number={impact.number} description={impact.description} url={impact.url}/>)}
     </div>

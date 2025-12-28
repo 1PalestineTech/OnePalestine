@@ -1,0 +1,17 @@
+.btn-filter{
+    font-size:16px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    background: black;
+    width:70px;
+}
+.tag-element{
+    padding: 4px;
+    color: white;
+    background: black;
+    font-size:14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
