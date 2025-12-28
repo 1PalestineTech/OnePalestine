@@ -20,7 +20,7 @@ class ArticleFilter(django_filters.FilterSet):
         if not tag_list:
             return queryset
 
-        return queryset.filter(tags__name__in=tag_list).distinct()
+        return queryset.filter(tags__name__in=tag_list).order_by('id')
 class MythViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ZionistMyth.objects.all()
     serializer_class = MythsSerializer
