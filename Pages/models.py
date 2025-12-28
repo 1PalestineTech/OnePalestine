@@ -1,5 +1,5 @@
 from django.db import models
-
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Tags(models.Model):
@@ -42,7 +42,7 @@ class OrganizationInfo(models.Model):
 class Articles(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    content = models.TextField() 
+    content = CKEditor5Field('Content', config_name='default')
     image = models.ImageField(upload_to='images/',default='images/default_article.jpg')
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name='articles')
     published_date = models.DateField(auto_now_add=True)
