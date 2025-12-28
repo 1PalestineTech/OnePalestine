@@ -22,11 +22,11 @@ class ArticleFilter(django_filters.FilterSet):
             return queryset
         return queryset.filter(tags__name__in=tag_list).order_by('id')
     def filter_category(self, queryset, name, value):
-        if not value:
+        if not value or not value.isdigit():
             return queryset
 
-        # Case-insensitive match for category name
-        return queryset.filter(category__name__iexact=value).distinct()
+        # Case-insensitive match for category e
+        return queryset.filter(category=value)
 
 class MythViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ZionistMyth.objects.all()

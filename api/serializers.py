@@ -13,6 +13,8 @@ class HistorySerializer(serializers.ModelSerializer):
         fields = ['id', 'date', 'title', 'description', 'link']
 
 class ArticlesSerializer(serializers.ModelSerializer):
+    category = serializers.StringRelatedField()
+    tags = serializers.StringRelatedField(many=True)
     class Meta:
         model = Articles
         fields = ['id', 'title', 'description', 'content', 'image','category','tags']
