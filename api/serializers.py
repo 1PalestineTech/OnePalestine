@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Pages.models import ZionistMyth,History,Articles
+from Pages.models import ZionistMyth,History,Articles,Tags,Categories
 
 class MythsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +16,13 @@ class ArticlesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Articles
         fields = ['id', 'title', 'description', 'content', 'image','category','tags']
+
+class TagsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tags
+        fields = '__all__'
+
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categories
+        fields = '__all__'

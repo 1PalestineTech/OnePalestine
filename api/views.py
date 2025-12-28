@@ -1,10 +1,11 @@
-import django_filters
-from Pages.models import ZionistMyth, Articles, History
+
+from Pages.models import ZionistMyth, Articles, History,Tags,Categories
 from rest_framework import viewsets
-from .serializers import MythsSerializer,HistorySerializer,ArticlesSerializer
+from .serializers import MythsSerializer,HistorySerializer,ArticlesSerializer,CategoriesSerializer,TagsSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django.db.models import Q, Case, When, IntegerField
+import django_filters
 class ArticleFilter(django_filters.FilterSet):
     tags = django_filters.CharFilter(method='filter_tags')
     class Meta:
@@ -14,20 +15,28 @@ class ArticleFilter(django_filters.FilterSet):
     def filter_tags(self, queryset, name, value):
         tag_list = value.split(',')
         return queryset.filter(tags__name__in=tag_list).distinct()
-
 class MythViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows items to be viewed or edited.
-    """
     queryset = ZionistMyth.objects.all()
     serializer_class = MythsSerializer
+    pagination_class = None
+
+class TagsViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Tags.objects.all()
+    serializer_class = TagsSerializer
+    pagination_class = None
+
+
+class CategoriesViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Categories.objects.all()
+    serializer_class = CategoriesSerializer
+    pagination_class = None
+
 
 class HistoryViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows items to be viewed or edited.
-    """
     queryset = History.objects.all()
     serializer_class = HistorySerializer
+    pagination_class = None
+
 class ArticlesViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ArticlesSerializer
     queryset = Articles.objects.all()
