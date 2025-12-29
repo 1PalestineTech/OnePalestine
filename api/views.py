@@ -1,11 +1,25 @@
 
-from Pages.models import ZionistMyth, Articles, History,Tags,Categories
+from Pages.models import ZionistMyth, Articles, History,Tags,Categories,Projects
 from rest_framework import viewsets
-from .serializers import MythsSerializer,HistorySerializer,ArticlesSerializer,CategoriesSerializer,TagsSerializer
+from .serializers import MythsSerializer,HistorySerializer,ArticlesSerializer,CategoriesSerializer,TagsSerializer, ProjectsSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django.db.models import Q, Case, When, IntegerField
 import django_filters
+
+class ProjectsFilter(django_filters.FilterSet):
+    tags = django_filters.CharFilter(method='filter_tags')
+    class Meta:
+        model = Projects
+        fields = ['tags']
+    def filter_tags(self, queryset, name, value):
+        if not value:
+            return queryset
+        tag_list = [v.strip().title() for v in value.split(',') if v.strip()]
+        if not tag_list:
+            return queryset
+        return queryset.filter(tags__name__in=tag_list,active=True).order_by('id')
+    
 class ArticleFilter(django_filters.FilterSet):
     tags = django_filters.CharFilter(method='filter_tags')
     category = django_filters.CharFilter(method='filter_category')
@@ -76,5 +90,32 @@ class ArticlesViewSet(viewsets.ReadOnlyModelViewSet):
                     output_field=IntegerField()
                 )
             ).order_by('priority', '-published_date')
+
+        return queryset
+    
+class ProjectsViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ProjectsSerializer
+    queryset = Projects.objects.all()
+
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_class = ProjectsFilter
+
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.query_params.get('search')
+
+        if search:
+            queryset = queryset.filter(
+                Q(title__icontains=search, active=True) |
+                Q(description__icontains=search, active=True)
+            ).annotate(
+                priority=Case(
+                    When(title__icontains=search, then=0),
+                    When(description__icontains=search, then=1),
+                    default=2,
+                    output_field=IntegerField()
+                )
+            )
 
         return queryset

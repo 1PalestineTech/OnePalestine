@@ -1,10 +1,16 @@
 from rest_framework import serializers
-from Pages.models import ZionistMyth,History,Articles,Tags,Categories
+from Pages.models import ZionistMyth,History,Articles,Tags,Categories,Projects
 
 class MythsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ZionistMyth
         fields = ['id', 'title', 'content']
+
+class ProjectsSerializer(serializers.ModelSerializer):
+    tags = serializers.StringRelatedField(many=True)
+    class Meta:
+        model = Projects
+        fields = '__all__'
 
 
 class HistorySerializer(serializers.ModelSerializer):
