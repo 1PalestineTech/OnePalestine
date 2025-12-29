@@ -1,6 +1,6 @@
 
 import './Hero.css'
-export function Hero({name,description,url="media/images/default_cover.jpg"}){
+export function Hero({name,description,url="/media/images/default_cover.jpg"}){
     
     const style={backgroundImage: 'linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(' + url + ')'}
     return (

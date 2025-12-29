@@ -1,0 +1,46 @@
+.items-container{
+    display:flex;
+    row-gap:20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.items-container >div >div{
+    height: 150px;
+}
+.container-link{
+    font-size: 14px;
+    color:black;
+    margin-top: 10px;
+}
+.items-container div p{
+    color: rgb(143, 138, 138);
+    font-size: 12px;
+}
+.items-container >div>img{
+    max-height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+.items-container >div{
+    border: rgb(143, 138, 138) solid 3px;
+    border-radius: 12px;
+}
+@media only screen and (min-width:1200px) {
+.items-container >div{
+    width:21%;
+}
+}
+@media only screen and (max-width:1200px) {
+    .items-container >div{
+    width:30% !important;
+}
+}
+@media only screen and (max-width:900px) {
+    .items-container >div{
+    width:46% !important;
+}
+}
+@media only screen and (max-width:500px) {
+   .items-container >div{
+    width:90% !important;
+}
+}
