@@ -1,10 +1,9 @@
 import {Hero} from '../components/Hero'
-import {Filter} from '../components/Filter'
-//import './Articles.css'
+import {ProjectFilter} from '../components/ProjectFilter'
 import {Page} from './Page'
 import {Loading} from '../components/Loading'
 import {useState,useEffect,useReducer} from 'react'
-import {ArticlesItems} from '../components/ArticlesItems'
+import {ProjectsItems} from '../components/ProjectsItems'
 
 
 
@@ -23,24 +22,23 @@ function urlReducer(state, action) {
 }
 
 
-function Articles(){
-    const [state, dispatch] = useReducer(urlReducer, { page: '1',category: '',tags:'',search:''  });
-    const url = '/api/articles/?';
+function Projects(){
+    const [state, dispatch] = useReducer(urlReducer, { page: '1',tags:'',search:''  });
+    const url = '/api/projects/?';
     const [loading, setLoading] = useState(true)
-    const [articles,setArticles] = useState({})
+    const [projects,setProjects] = useState({})
     useEffect(()=>{
         let queries = [];
         state.page !== '' && queries.push('page=' + state.page);
         state.search !== '' && queries.push('search=' + state.search);
         state.tags !== '' && queries.push('tags=' + state.tags);
-        state.category !== '' && queries.push('category=' + state.category);
         fetch(url + queries.join('&') ).then(
             response =>{
                 return response.json()
             }
         ).then(
             data=>{
-                setArticles(data)
+                setProjects(data)
                 setLoading(false)
             }
         )
@@ -48,15 +46,15 @@ function Articles(){
 
 return (
     <main className ="flex-column  w-100">
-    <Hero name="Our Articles" description="" />
+    <Hero name="Active Projects" description="" />
     
     <div className="flex-column row-gap-30 m-20 w-90">
-        <Filter dispatch={dispatch} />
-        {loading ? <Loading />:<ArticlesItems items={articles.results}/>}
+        <ProjectFilter dispatch={dispatch} />
+        {loading ? <Loading />:<ProjectsItems items={projects.results}/>}
         <div className='flex-row jc-center column-gap-10'>
 
-            {articles.previous ?<button className='btn-filter' onClick={()=>{dispatch({type: 'Previous'})}}>Previous</button>:<></>}
-            {articles.next ?<button className='btn-filter' onClick={()=>{dispatch({type: 'Next'})}}>Next</button>:<></>}
+            {projects.previous ?<button className='btn-filter' onClick={()=>{dispatch({type: 'Previous'})}}>Previous</button>:<></>}
+            {projects.next ?<button className='btn-filter' onClick={()=>{dispatch({type: 'Next'})}}>Next</button>:<></>}
         </div>
     </div>
     </main>
@@ -64,4 +62,4 @@ return (
 }
 
 
-export const ArticlesPage = Page(Articles)
+export const ProjectsPage = Page(Projects)
