@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import History,Tags,ZionistMyth,Categories,OrganizationInfo,Articles
+from .models import History,Tags,ZionistMyth,Categories,OrganizationInfo,Articles,Projects
 
 class CategoriesAdmin(admin.ModelAdmin):
     list_display = ('name',) 
@@ -22,6 +22,13 @@ class ArticlesAdmin(admin.ModelAdmin):
     list_display = ('title','description','category')
     search_fields = ('title','description','category__name')
     filter_horizontal = ('tags',) 
+
+class ProjectsAdmin(admin.ModelAdmin):
+    list_display = ('title','description','link')
+    search_fields = ('title','description','link')
+    filter_horizontal = ('tags',) 
+
+
 admin.site.register(History,HistoryAdmin)
 admin.site.register(Tags,TagsAdmin)
 
@@ -29,3 +36,5 @@ admin.site.register(ZionistMyth,ZionistMythAdmin)
 admin.site.register(Categories, CategoriesAdmin)
 admin.site.register(OrganizationInfo)
 admin.site.register(Articles,ArticlesAdmin)
+
+admin.site.register(Projects,ProjectsAdmin)
