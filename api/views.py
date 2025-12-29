@@ -95,7 +95,7 @@ class ArticlesViewSet(viewsets.ReadOnlyModelViewSet):
     
 class ProjectsViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProjectsSerializer
-    queryset = Projects.objects.all()
+    queryset = Projects.objects.filter(active=True)
 
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_class = ProjectsFilter
